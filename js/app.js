@@ -41,12 +41,12 @@ createApp({
                 this.currentIndex = 0;
             }
         },
-        
+
         prevSlide() {
             this.currentIndex--;
-            if(this.currentIndex < 0) {
-                this.currentIndex = this.slides.length - 1
+            if (this.currentIndex < 0) {
+                this.currentIndex = this.slides.length - 1;
             }
-        }
+        },
     },
 }).mount('#app');

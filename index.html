@@ -2,37 +2,44 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Vue Slider</title>
+        <title>Slider</title>
         <link rel="stylesheet" href="./css/app.css" />
-        <script src="https://unpkg.com/vue@3"></script>
     </head>
+
     <body>
-        <section>
-            <div id="app">
-                <div class="container">
-                    <div class="carousel">
-                        <div class="carousel_item">
-                            <img
-                                class="carousel_img"
-                                :src="slides[currentIndex].image"
-                                class="card-img-top"
-                            />
-                            <div class="details">
-                                <h3 class="title">
-                                    {{ slides[currentIndex].title }}
-                                </h3>
-                                <p class="text">
-                                    {{ slides[currentIndex].text }}
-                                </p>
-                            </div>
+        <div id="app">
+            <div class="container">
+                <div class="slider-wrapper" tabindex="0">
+                    <div class="item">
+                        <img
+                            class="carousel_img"
+                            :src="slides[currentIndex].image"
+                            class="card-img-top"
+                        />
+                        <div class="text">
+                            <h3> {{ slides[currentIndex].title }} </h3>
+                            <p> {{ slides[currentIndex].text }} </p>
                         </div>
-                        <div class="arrow arrow--right" @click="nextSlide()"></div>
-                        <div class="arrow arrow--left" @click="prevSlide()"></div>
+                    </div>
+
+                    <div class="thumbs">
+                        <div class="next" @click="nextSlide()"></div>
+                        <div class="prev" @click="prevSlide()"></div>
+                        <div
+                            class="thumb"
+                            :class="currentIndex === index ? 'active' : '' "
+                            v-for="(slide, index) in slides"
+                        >
+                            <img :src="slide.image" alt="Ratchet & Clank" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script src="./js/app.js"></script>
     </body>
 </html>

@@ -4,78 +4,97 @@
     box-sizing: border-box;
 }
 
-img {
-    max-width: 100%;
-}
-
-section {
-    padding: 80px 0;
-}
-
 .container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.carousel {
-    position: relative;
-}
-
-.carousel_item {
-    width: 100%;
-}
-
-.carousel_img {
-    aspect-ratio: 21/9;
-    object-fit: cover;
-}
-
-.details {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    color: white;
-    text-align: end;
-}
-
-.arrow {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: rgba(226, 223, 223, 0.426);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 50;
+}
+
+.item {
+    float: left;
+    width: 700px;
+    height: 300px;
+    position: relative;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item .text {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    text-align: right;
+    color: white;
+}
+
+.thumbs {
+    float: left;
+    height: 300px;
+    background: #000;
+    position: relative;
+}
+
+.thumb {
+    height: calc((300px) / 5);
+    opacity: 0.5;
+}
+
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumb.active {
+    border: 2px solid #ccc;
+    opacity: 1;
+}
+
+.prev,
+.next {
+    width: 20px;
+    height: 20px;
+    margin: 10px 0;
+    border-radius: 50%;
+    background: #ccc;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
     cursor: pointer;
+    z-index: 999;
 }
 
-.arrow::after {
+.next {
+    bottom: 0;
+}
+
+.prev::after {
     content: '';
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
     display: block;
-    width: 14px;
-    height: 14px;
-    border-top: 2px solid black;
-    border-right: 2px solid black;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%) rotate(-45deg);
 }
 
-.arrow.arrow--left::after {
-    transform: rotate(-135deg);
-}
-
-.arrow.arrow--left {
-    left: 25px;
-    padding-left: 7px;
-}
-
-.arrow.arrow--right::after {
-    transform: rotate(45deg);
-}
-
-.arrow.arrow--right {
-    right: 25px;
-    padding-right: 3px;
+.next::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    display: block;
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    transform: translate(-50%) rotate(135deg);
 }
